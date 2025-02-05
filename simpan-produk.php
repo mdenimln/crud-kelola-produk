@@ -22,7 +22,7 @@ $query = "INSERT INTO produk (nama_produk, kategori, deskripsi, stok, harga_prod
 if($connection->query($query)) {
 
     //redirect ke halaman index.php 
-    header("location: index.php");
+    header("location: produk.php");
 
 } else {
 

@@ -19,7 +19,7 @@ $query = "UPDATE produk SET nama_produk = '$nama_produk', kategori = '$kategori'
 //kondisi pengecekan apakah data berhasil diupdate atau tidak
 if($connection->query($query)) {
     //redirect ke halaman index.php 
-    header("location: index.php");
+    header("location: produk.php");
 } else {
     //pesan error gagal update data
     echo "Data Gagal Diupate!";
