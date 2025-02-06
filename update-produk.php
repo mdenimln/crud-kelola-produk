@@ -10,11 +10,11 @@ $kategori = $_POST['kategori'];
 $deskripsi = $_POST['deskripsi'];
 $stok = $_POST['stok'];
 $harga = $_POST['harga'];
-$id_suplier = $_POST['suplier'];
+$data_suplier = $_POST['data_suplier'];
 $berat = $_POST['berat'];
 
 //query update data ke dalam database berdasarkan ID
-$query = "UPDATE produk SET nama_produk = '$nama_produk', kategori = '$kategori', deskripsi = '$deskripsi', stok = '$stok', harga_produk = '$harga', id_suplier = '$id_suplier', berat = '$berat' WHERE id = '$id'";
+$query = "UPDATE produk SET nama_produk = '$nama_produk', kategori = '$kategori', deskripsi = '$deskripsi', stok = '$stok', harga_produk = '$harga', data_suplier = '$data_suplier', berat = '$berat' WHERE id = '$id'";
 
 //kondisi pengecekan apakah data berhasil diupdate atau tidak
 if($connection->query($query)) {

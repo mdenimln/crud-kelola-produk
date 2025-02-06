@@ -28,14 +28,14 @@
         <div class="col-md-8 offset-md-2">
           <div class="card">
             <div class="card-header">
-              EDIT Suplier
+              EDIT SUPPLIER
             </div>
             <div class="card-body">
               <form action="update-suplier.php" method="POST">
                 
                 <div class="form-group">
-                  <label>Nama Suplier</label>
-                  <input type="text" name="nama_suplier" value="<?php echo $row['nama'] ?>" placeholder="Masukkan Nama Suplier" class="form-control">
+                  <label>Nama Supplier</label>
+                  <input type="text" name="nama_suplier" value="<?php echo $row['nama'] ?>" placeholder="Masukkan Nama Supplier" class="form-control">
                   <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
                 </div>
 

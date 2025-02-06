@@ -10,21 +10,21 @@
   <body>
 
   <div class="container mt-5">
-        <h2 class="mb-4">Form Tambah suplier</h2>
+        <h2 class="mb-4">Form Tambah Supplier</h2>
     <form action="simpan-suplier.php" method="POST">
             <div class="form-group">
                 <label for="namaSuplier">Nama suplier</label>
-                <input type="text" class="form-control" name="nama_suplier" placeholder="Masukkan nama suplier">
+                <input type="text" class="form-control" name="nama_suplier" placeholder="Masukkan nama supplier">
             </div>
             <div class="form-group">
                 <label for="teleon">Telepon</label>
-                <input type="number" class="form-control" name="telepon" placeholder="Masukkan no telepon">
+                <input type="tel" class="form-control" name="telepon" placeholder="Masukkan no telepon">
             </div>
             <div class="form-group">
                 <label for="alamat">Alamat</label>
                 <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat">
             </div>
-            <button type="submit" class="btn btn-primary">Tambah Suplier</button>
+            <button type="submit" class="btn btn-primary">Tambah Supplier</button>
     </form>
   </div>
 

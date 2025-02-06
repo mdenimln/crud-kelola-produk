@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <title>Tambah Produk</title>
+    <title>Tambah Pelanggan</title>
   </head>
 
   <body>
@@ -13,19 +13,23 @@
         <h2 class="mb-4">Form Tambah Pelanggan</h2>
     <form action="simpan-pelanggan.php" method="POST">
             <div class="form-group">
-                <label for="namaProduk">Nama Pelanggan</label>
+                <label for="nama_pelanggan">Nama Pelanggan</label>
                 <input type="text" class="form-control" name="nama_pelanggan" placeholder="Masukkan nama pelanggan">
             </div>
             <div class="form-group">
-                <label for="kategori">Jenis Kelamin</label>
-                <input type="text" class="form-control"name="jenis_kelamin" placeholder="Masukkan Jenis Kelamin">
+                <label for="jenis_kelamin">Jenis Kelamin:</label>
+                <select class="form-control" name="jenis_kelamin">
+                    <option value="">-- Pilih Jenis Kelamin --</option>
+                    <option value="Laki-Laki">Laki-Laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="suplier">Telepon</label>
+                <label for="telepon">Telepon</label>
                 <input type="number" class="form-control" name="telepon" placeholder="Masukkan no telepon">
             </div>
             <div class="form-group">
-                <label for="berat">Alamat</label>
+                <label for="alamat">Alamat</label>
                 <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat">
             </div>
             <button type="submit" class="btn btn-primary">Tambah Pelanggan</button>

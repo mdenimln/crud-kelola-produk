@@ -5,14 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <title>Data Siswa</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <title>Data Penjualan</title>
   </head>
 
   <body>
 
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light px-5 py-3">
-        <a class="navbar-brand" href="#">Tabel Kelola</a>
+        <a class="navbar-brand" href="#">DATA KELOLA (ADMIN)</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,10 +38,10 @@
               <a class="nav-link" href="produk.php">Produk</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="suplier.php">Suplier</a>
+              <a class="nav-link" href="suplier.php">Supplier</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="penjualan.php">Penjualan</a>
+              <a class="nav-link" href="penjualan.php">Transaksi</a>
             </li>
           </ul>
         </div>
@@ -45,16 +55,16 @@
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                DATA PENJUALAN
+                DATA TRANSAKSI
               </div>
               <div class="card-body">
-                <a href="tambah-penjualan.php" class="btn btn-md btn-success" style="margin-bottom: 10px">TAMBAH penjualan</a>
-                <table class="table table-bordered" id="myTable">
+                <a href="tambah-penjualan.php" class="btn btn-md btn-success" style="margin-bottom: 10px">TAMBAH TRANSAKSI</a>
+                <table class="table table-bordered table-striped table-hover" id="myTable">
                   <thead>
                     <tr>
                       <th class="text-center align-middle" scope="col">NO.</th>
-                      <th class="text-center align-middle" scope="col">ID PRODUK</th>
-                      <th class="text-center align-middle" scope="col">ID PELANGGAN</th>
+                      <th class="text-center align-middle" scope="col">DATA PRODUK</th>
+                      <th class="text-center align-middle" scope="col">DATA PELANGGAN</th>
                       <th class="text-center align-middle" scope="col">JUMLAH</th>
                       <th class="text-center align-middle" scope="col">TANGGAL</th>
                       <th class="text-center align-middle" scope="col">AKSI</th>
@@ -70,13 +80,14 @@
   
                     <tr>
                         <td><?php echo $no++ ?></td>
-                        <td><?php echo $row['id_produk'] ?></td>
-                        <td><?php echo $row['id_pelanggan'] ?></td>
+                        <td><?php echo $row['data_produk'] ?></td>
+                        <td><?php echo $row['data_pelanggan'] ?></td>
                         <td><?php echo $row['jumlah'] ?></td>
                         <td><?php echo $row['tanggal'] ?></td>
-                        <td class="d-flex justify-content-center gap-1">
-                          <a href="edit-penjualan.php?id=<?php echo $row['id'] ?>" class="btn btn-sm btn-primary mr-1">EDIT</a>
-                          <a href="hapus-penjualan.php?id=<?php echo $row['id'] ?>" class="btn btn-sm btn-danger">HAPUS</a>
+                        <td>
+                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                            <a href="edit-penjualan.php?id=<?php echo $row['id'] ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a href="hapus-penjualan.php?id=<?php echo $row['id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                         </td>
                     </tr>
   

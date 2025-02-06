@@ -5,14 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <title>Data Siswa</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <title>Data Pelanggan</title>
   </head>
 
   <body>
-
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light px-5 py-3">
-        <a class="navbar-brand" href="#">Tabel Kelola</a>
+        <a class="navbar-brand" href="#">DATA KELOLA (ADMIN)</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -49,7 +59,7 @@
               </div>
               <div class="card-body">
                 <a href="tambah-pelanggan.php" class="btn btn-md btn-success" style="margin-bottom: 10px">TAMBAH PELANGGAN</a>
-                <table class="table table-bordered" id="myTable">
+                <table class="table table-bordered table-striped table-hover" id="myTable">
                   <thead>
                     <tr>
                       <th class="text-center align-middle" scope="col">NO.</th>
@@ -57,6 +67,7 @@
                       <th class="text-center align-middle" scope="col">JENIS KELAMIN</th>
                       <th class="text-center align-middle" scope="col">TELEPON</th>
                       <th class="text-center align-middle" scope="col">ALAMAT</th>
+                      <th class="text-center align-middle" scope="col">AKSI</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -73,9 +84,10 @@
                         <td><?php echo $row['jenis_kelamin'] ?></td>
                         <td><?php echo $row['telepon'] ?></td>
                         <td><?php echo $row['alamat'] ?></td>
-                        <td class="d-flex justify-content-center gap-1">
-                          <a href="edit-pelanggan.php?id=<?php echo $row['id'] ?>" class="btn btn-sm btn-primary mr-1">EDIT</a>
-                          <a href="hapus-pelanggan.php?id=<?php echo $row['id'] ?>" class="btn btn-sm btn-danger">HAPUS</a>
+                        <td>
+                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                            <a href="edit-pelanggan.php?id=<?php echo $row['id'] ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a href="hapus-pelanggan.php?id=<?php echo $row['id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                         </td>
                     </tr>
   

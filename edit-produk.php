@@ -5,10 +5,13 @@
   $id = $_GET['id'];
   
   $query = "SELECT * FROM produk WHERE id = $id LIMIT 1";
-
   $result = mysqli_query($connection, $query);
-
   $row = mysqli_fetch_array($result);
+
+  // Query untuk mengambil data dari tabel
+  $sql_suplier = "SELECT id, nama FROM suplier";
+  $result_suplier = $connection->query($sql_suplier);
+
 
   ?>
 
@@ -46,7 +49,7 @@
 
                 <div class="form-group">
                   <label>Deskripsi</label>
-                  <textarea class="form-control" name="deskripsi" placeholder="Masukkan Deskripsi Produk" rows="4"><?php echo $row['deskripsi'] ?></textarea>
+                  <textarea class="form-control" name="deskripsi" placeholder="Masukkan Deskripsi Produk" rows="4" ><?php echo $row['deskripsi'] ?></textarea>
                 </div>
 
                 <div class="form-group">
@@ -60,13 +63,22 @@
                 </div>
 
                 <div class="form-group">
-                  <label>Suplier</label>
-                  <input class="form-control" name="suplier" placeholder="Masukkan Id Suplier" value="<?php echo $row['id_suplier'] ?>">
-                </div>
+                  <label for="data">Pilih Data:</label>
+                  <select class="form-control" name="data_suplier">
+                      <option value="<?php echo $row['data_suplier'] ?>"><?php echo $row['data_suplier'] ?></option>
+                      <?php
+                      if ($result_suplier->num_rows > 0) {
+                          while($row_suplier = $result_suplier->fetch_assoc()) {
+                              echo "<option name='data' value='" . $row_suplier['id'] ." - ". $row_suplier['nama'] ."'>". $row_suplier['id'] ." - ". $row_suplier['nama'] . "</option>";
+                          }
+                      }
+                      ?>
+                  </select>
+                </div>    
 
                 <div class="form-group">
-                  <label>Berat</label>
-                  <input class="form-control" name="berat" placeholder="Masukkan Berat Produk" value="<?php echo $row['berat'] ?>">
+                  <label for="berat">Berat (Kg)</label>
+                  <input type="number" class="form-control" name="berat" placeholder="Masukkan berat produk" value="<?php echo $row['berat'] ?>">
                 </div>
 
 

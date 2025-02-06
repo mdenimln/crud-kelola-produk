@@ -10,13 +10,14 @@ $kategori = $_POST['kategori'];
 $deskripsi = $_POST['deskripsi'];
 $stok = $_POST['stok'];
 $harga = $_POST['harga'];
-$id_suplier = $_POST['suplier'];
+$data_suplier = $_POST['data_suplier'];
 $berat = $_POST['berat'];
+var_dump($data_suplier);
 
 
 //query insert data ke dalam database
 
-$query = "INSERT INTO produk (nama_produk, kategori, deskripsi, stok, harga_produk, berat, id_suplier) VALUES ('$nama_produk', '$kategori', '$deskripsi', '$stok', '$harga', '$berat', '$id_suplier')";
+$query = "INSERT INTO produk (nama_produk, kategori, deskripsi, stok, harga_produk, berat, data_suplier) VALUES ('$nama_produk', '$kategori', '$deskripsi', '$stok', '$harga', '$berat', '$data_suplier')";
 
 //kondisi pengecekan apakah data berhasil dimasukkan atau tidak
 if($connection->query($query)) {

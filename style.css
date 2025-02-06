@@ -1,0 +1,24 @@
+table.table td:last-child {
+    display: flex;
+    justify-content: center;
+    get: 10px;
+    align-items: center;
+    height: 100%;
+  }
+  table.table td a {
+      color: #a0a5b1;
+      display: inline-block;
+      margin: 0 5px;
+  }
+  table.table td a.view {
+      color: #03A9F4;
+  }
+  table.table td a.edit {
+      color: #FFC107;
+  }
+  table.table td a.delete {
+      color: #E34724;
+  }
+  table.table td i {
+      font-size: 20px;
+  }  

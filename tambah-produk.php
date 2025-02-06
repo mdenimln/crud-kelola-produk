@@ -1,3 +1,11 @@
+<?php
+include 'koneksi.php';
+
+// Query untuk mengambil data dari tabel
+$sql = "SELECT id, nama FROM suplier";
+$result = $connection->query($sql);
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -32,10 +40,20 @@
                 <label for="stok">Stok</label>
                 <input type="number" class="form-control" id="stok" name="stok" placeholder="Masukkan jumlah stok">
             </div>
+          
             <div class="form-group">
-                <label for="suplier">ID Suplier</label>
-                <input type="text" class="form-control" id="suplier" name="suplier" placeholder="Masukkan nama suplier">
-            </div>
+                <label for="data">Pilih Data:</label>
+                <select class="form-control" name="data_suplier">
+                    <option value=""> -- Suplier -- </option>
+                    <?php
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo "<option name='data' value='" . $row['id'] ." - ". $row['nama'] ."'>". $row['id'] ." - ". $row['nama'] . "</option>";
+                        }
+                    }
+                    ?>
+                </select>
+            </div>       
             <div class="form-group">
                 <label for="berat">Berat (Kg)</label>
                 <input type="number" step="0.01" class="form-control" id="berat" name="berat" placeholder="Masukkan berat produk">
@@ -48,3 +66,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   </body>
 </html>
+
+<?php
+$connection->close();
+?>

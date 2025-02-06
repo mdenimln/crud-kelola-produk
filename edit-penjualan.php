@@ -3,12 +3,15 @@
   include('koneksi.php');
   
   $id = $_GET['id'];
-  
   $query = "SELECT * FROM penjualan WHERE id = $id LIMIT 1";
-
   $result = mysqli_query($connection, $query);
-
   $row = mysqli_fetch_array($result);
+
+  $sql_produk = "SELECT id, nama_produk FROM produk";
+  $result_produk = $connection->query($sql_produk);
+
+  $sql_pelanggan = "SELECT id, nama FROM pelanggan";
+  $result_pelanggan = $connection->query($sql_pelanggan);
 
   ?>
 
@@ -28,20 +31,39 @@
         <div class="col-md-8 offset-md-2">
           <div class="card">
             <div class="card-header">
-              EDIT penjualan
+              EDIT TRANSAKSI
             </div>
             <div class="card-body">
               <form action="update-penjualan.php" method="POST">
                 <div class="form-group">
-                    <label for="namaProduk">Id Produk</label>
-                    <input type="text" class="form-control" name="id_produk" placeholder="Masukkan Id Produk" value="<?php echo $row['id_produk'] ?>">
-                    <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
+                    <label for="data_produk">Pilih Data:</label>
+                    <select class="form-control" name="data_produk">
+                      <option value="<?php echo $row['data_produk'] ?>"><?php echo $row['data_produk'] ?></option>
+                      <?php
+                      if ($result_produk->num_rows > 0) {
+                        while($row_produk = $result_produk->fetch_assoc()) {
+                          echo "<option name='data_produk' value='" . $row_produk['nama_produk'] ."'>". $row_produk['nama_produk'] . "</option>";
+                        }
+                      }
+                      ?>
+                  </select>
+                  <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
                 </div>
-    
+
                 <div class="form-group">
-                    <label for="kategori">Id Pelanggan</label>
-                    <input type="text" class="form-control"name="id_pelanggan" placeholder="Masukkan Id Pelanggan" value="<?php echo $row['id_pelanggan'] ?>">
+                    <label for="data_pelanggan">Pilih Data:</label>
+                    <select class="form-control" name="data_pelanggan">
+                      <option value="<?php echo $row['data_pelanggan'] ?>"><?php echo $row['data_pelanggan'] ?></option>
+                      <?php
+                      if ($result_pelanggan->num_rows > 0) {
+                        while($row_pelanggan = $result_pelanggan->fetch_assoc()) {
+                          echo "<option name='data_pelanggan' value='" . $row_pelanggan['nama'] ."'>".$row_pelanggan['nama'] . "</option>";
+                        }
+                      }
+                      ?>
+                  </select>
                 </div>
+                
                 <div class="form-group">
                     <label for="suplier">Jumlah</label>
                     <input type="number" class="form-control" name="jumlah" placeholder="Masukan Jumlah" value="<?php echo $row['jumlah'] ?>">

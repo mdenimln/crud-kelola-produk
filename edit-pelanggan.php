@@ -38,15 +38,19 @@
                   <input type="text" name="nama_pelanggan" value="<?php echo $row['nama'] ?>" placeholder="Masukkan Nama Pelanggan" class="form-control">
                   <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
                 </div>
-
+                
                 <div class="form-group">
-                  <label>Jenis Kelamin</label>
-                  <input type="text" name="jenis_kelamin" value="<?php echo $row['jenis_kelamin'] ?>" placeholder="Masukkan Jenis Kelamin" class="form-control">
+                  <label for="jenis_kelamin">Jenis Kelamin:</label>
+                  <select class="form-control" name="jenis_kelamin">
+                      <option value="<?php echo $row['jenis_kelamin'] ?>"><?php echo $row['jenis_kelamin'] ?></option>
+                      <option value="Laki-Laki">Laki-Laki</option>
+                      <option value="Perempuan">Perempuan</option>
+                  </select>
                 </div>
 
                 <div class="form-group">
                   <label>Telepon</label>
-                  <input class="form-control" name="telepon" placeholder="Masukkan Telepon"><?php echo $row['telepon'] ?></input>
+                  <input class="form-control" name="telepon" placeholder="Masukkan Telepon" value="<?php echo $row['telepon'] ?>">
                 </div>
 
                
