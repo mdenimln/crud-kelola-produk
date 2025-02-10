@@ -1,26 +1,25 @@
 <?php
 
 //include koneksi database
-include('koneksi.php');
+include('../koneksi.php');
 
 //get data dari form
 
-$nama_pelanggan = $_POST['nama_pelanggan'];
+$nama_suplier = $_POST['nama_suplier'];
 $alamat = $_POST['alamat'];
 $no_telp = $_POST['telepon'];
-$kelamin = $_POST['jenis_kelamin'];
 
 
 
 //query insert data ke dalam database
 
-$query = "INSERT INTO pelanggan (nama, alamat, telepon, jenis_kelamin) VALUES ('$nama_pelanggan', '$alamat', '$no_telp', '$kelamin')";
+$query = "INSERT INTO suplier (nama, alamat, telepon) VALUES ('$nama_suplier', '$alamat', '$no_telp')";
 
 //kondisi pengecekan apakah data berhasil dimasukkan atau tidak
 if($connection->query($query)) {
 
     //redirect ke halaman index.php 
-    header("location: pelanggan.php");
+    header("location: suplier.php");
 
 } else {
 

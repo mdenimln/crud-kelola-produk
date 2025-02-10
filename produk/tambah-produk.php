@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php';
+include '../koneksi.php';
 
 // Query untuk mengambil data dari tabel
 $sql = "SELECT id, nama FROM suplier";

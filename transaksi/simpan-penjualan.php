@@ -1,7 +1,7 @@
 <?php
 
 //include koneksi database
-include('koneksi.php');
+include('../koneksi.php');
 
 //get data dari form
 

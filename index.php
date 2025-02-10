@@ -22,16 +22,16 @@
               <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pelanggan.php">Pelanggan</a>
+              <a class="nav-link" href="pelanggan/pelanggan.php">Pelanggan</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="produk.php">Produk</a>
+              <a class="nav-link" href="produk/produk.php">Produk</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="suplier.php">Supplier</a>
+              <a class="nav-link" href="supplier/suplier.php">Supplier</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="penjualan.php">Transaksi</a>
+              <a class="nav-link" href="transaksi/penjualan.php">Transaksi</a>
             </li>
           </ul>
         </div>

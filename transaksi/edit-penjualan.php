@@ -1,6 +1,6 @@
 <?php 
   
-  include('koneksi.php');
+  include('../koneksi.php');
   
   $id = $_GET['id'];
   $query = "SELECT * FROM transaksi WHERE id = $id LIMIT 1";

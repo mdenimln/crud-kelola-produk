@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <title>Data Penjualan</title>
   </head>
 
@@ -29,16 +29,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="../index.php">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="pelanggan.php">Pelanggan</a>
+              <a class="nav-link" href="../pelanggan/pelanggan.php">Pelanggan</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="produk.php">Produk</a>
+              <a class="nav-link" href="../produk/produk.php">Produk</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="suplier.php">Supplier</a>
+              <a class="nav-link" href="../supplier/suplier.php">Supplier</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="penjualan.php">Transaksi</a>
@@ -71,7 +71,7 @@
                   </thead>
                   <tbody>
                     <?php 
-                        include('koneksi.php');
+                        include('../koneksi.php');
                         $no = 1;
                         $query = mysqli_query($connection,"SELECT * FROM transaksi");
                         while($row = mysqli_fetch_array($query)){
@@ -84,8 +84,8 @@
                         <td><?php echo $row['tanggal'] ?></td>
                         <td>
                             <a href="#" class="view" title="View" data-id="<?php echo $row['id']; ?>"><i class="material-icons">visibility</i></a>
-                            <a href="edit-penjualan.php?id=<?php echo $row['id'] ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">edit</i></a>
-                            <a href="hapus-penjualan.php?id=<?php echo $row['id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">delete</i></a>
+                            <a href="../transaksi/edit-penjualan.php?id=<?php echo $row['id'] ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">edit</i></a>
+                            <a href="../transaksi/hapus-penjualan.php?id=<?php echo $row['id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">delete</i></a>
                         </td>
                     </tr>
                     <?php } ?>

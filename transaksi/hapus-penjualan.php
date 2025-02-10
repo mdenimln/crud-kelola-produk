@@ -1,14 +1,14 @@
 <?php
 
-include('koneksi.php');
+include('../koneksi.php');
 
 //get id
 $id = $_GET['id'];
 
-$query = "DELETE FROM suplier WHERE id = '$id'";
+$query = "DELETE FROM transaksi WHERE id = '$id'";
 
 if($connection->query($query)) {
-    header("location: suplier.php");
+    header("location: penjualan.php");
 } else {
     echo "DATA GAGAL DIHAPUS!";
 }
