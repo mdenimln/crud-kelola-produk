@@ -15,7 +15,7 @@ $tanggal = date('Y-m-d');
 
 //query insert data ke dalam database
 
-$query = "INSERT INTO penjualan (data_produk, data_pelanggan, jumlah, tanggal) VALUES ('$data_produk', '$data_pelanggan', '$jumlah', '$tanggal')";
+$query = "INSERT INTO transaksi (data_produk, data_pelanggan, jumlah, tanggal) VALUES ('$data_produk', '$data_pelanggan', '$jumlah', '$tanggal')";
 
 //kondisi pengecekan apakah data berhasil dimasukkan atau tidak
 if($connection->query($query)) {

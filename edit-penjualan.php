@@ -3,7 +3,7 @@
   include('koneksi.php');
   
   $id = $_GET['id'];
-  $query = "SELECT * FROM penjualan WHERE id = $id LIMIT 1";
+  $query = "SELECT * FROM transaksi WHERE id = $id LIMIT 1";
   $result = mysqli_query($connection, $query);
   $row = mysqli_fetch_array($result);
 

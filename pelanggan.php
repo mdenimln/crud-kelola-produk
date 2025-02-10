@@ -13,9 +13,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    
-    <link rel="stylesheet" href="style.css">
 
+    <link rel="stylesheet" href="style.css">
     <title>Data Pelanggan</title>
   </head>
 
@@ -29,7 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="pelanggan.php">Pelanggan</a>
@@ -49,7 +48,6 @@
     </header>
 
     <main>
-
       <div class="container" style="margin-top: 80px">
         <div class="row">
           <div class="col-md-12">
@@ -62,12 +60,12 @@
                 <table class="table table-bordered table-striped table-hover" id="myTable">
                   <thead>
                     <tr>
-                      <th class="text-center align-middle" scope="col">NO.</th>
-                      <th class="text-center align-middle" scope="col">NAMA PELANGGAN</th>
-                      <th class="text-center align-middle" scope="col">JENIS KELAMIN</th>
-                      <th class="text-center align-middle" scope="col">TELEPON</th>
-                      <th class="text-center align-middle" scope="col">ALAMAT</th>
-                      <th class="text-center align-middle" scope="col">AKSI</th>
+                      <th class="text-center align-middle">NO.</th>
+                      <th class="text-center align-middle">NAMA PELANGGAN</th>
+                      <th class="text-center align-middle">JENIS KELAMIN</th>
+                      <th class="text-center align-middle">TELEPON</th>
+                      <th class="text-center align-middle">ALAMAT</th>
+                      <th class="text-center align-middle">AKSI</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -77,7 +75,6 @@
                         $query = mysqli_query($connection,"SELECT * FROM pelanggan");
                         while($row = mysqli_fetch_array($query)){
                     ?>
-  
                     <tr>
                         <td><?php echo $no++ ?></td>
                         <td><?php echo $row['nama'] ?></td>
@@ -85,13 +82,12 @@
                         <td><?php echo $row['telepon'] ?></td>
                         <td><?php echo $row['alamat'] ?></td>
                         <td>
-                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                            <a href="edit-pelanggan.php?id=<?php echo $row['id'] ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="hapus-pelanggan.php?id=<?php echo $row['id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                            <a href="#" class="view" title="View" data-id="<?php echo $row['id']; ?>"><i class="material-icons">visibility</i></a>
+                            <a href="edit-pelanggan.php?id=<?php echo $row['id'] ?>" class="edit" title="Edit"><i class="material-icons">edit</i></a>
+                            <a href="hapus-pelanggan.php?id=<?php echo $row['id'] ?>" class="delete" title="Delete"><i class="material-icons">delete</i></a>
                         </td>
                     </tr>
-  
-                  <?php } ?>
+                    <?php } ?>
                   </tbody>
                 </table>
               </div>
@@ -100,14 +96,46 @@
       </div>
     </main>
 
+    <div class="modal fade" id="viewModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detail Pelanggan</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body-content" style="padding: 20px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" id="nama"></h5>
+                            <p class="card-text"><strong>Jenis Kelamin:</strong> <span id="jenis_kelamin"></span></p>
+                            <p class="card-text"><strong>Telepon:</strong> <span id="telepon"></span></p>
+                            <p class="card-text"><strong>Alamat:</strong> <span id="alamat"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script>
-      $(document).ready( function () {
-          $('#myTable').DataTable();
-      } );
+        $(document).ready(function(){
+            $('.view').click(function(){
+                var id = $(this).data('id');
+                $.ajax({
+                    url: 'view-pelanggan.php',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function(response){
+                        var data = JSON.parse(response);
+                        $('#nama').text(data.nama);
+                        $('#jenis_kelamin').text(data.jenis_kelamin);
+                        $('#telepon').text(data.telepon);
+                        $('#alamat').text(data.alamat);
+                        $('#viewModal').modal('show');
+                    }
+                });
+            });
+        });
     </script>
   </body>
 </html>

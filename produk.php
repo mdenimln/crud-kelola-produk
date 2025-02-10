@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,12 +15,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="style.css">
-
     <title>Data Produk</title>
   </head>
 
   <body>
-
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light px-5 py-3">
         <a class="navbar-brand" href="#">DATA KELOLA (ADMIN)</a>
@@ -30,7 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="index.php">Beranda</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="pelanggan.php">Pelanggan</a>
@@ -50,7 +48,6 @@
     </header>
 
     <main>
-
       <div class="container" style="margin-top: 80px">
         <div class="row">
           <div class="col-md-12">
@@ -63,15 +60,15 @@
                 <table class="table table-bordered table-striped table-hover" id="myTable">
                   <thead>
                     <tr>
-                      <th class="text-center align-middle" scope="col">NO.</th>
-                      <th class="text-center align-middle" scope="col">NAMA PRODUK</th>
-                      <th class="text-center align-middle" scope="col">KATEGORI PRODUK</th>
-                      <th class="text-center align-middle" scope="col">DESKRIPSI</th>
-                      <th class="text-center align-middle" scope="col">HARGA PRODUK</th>
-                      <th class="text-center align-middle" scope="col">STOK</th>
-                      <th class="text-center align-middle" scope="col">BERAT</th>
-                      <th class="text-center align-middle" scope="col">DATA SUPPLIER</th>
-                      <th class="text-center align-middle" scope="col">AKSI</th>
+                      <th class="text-center align-middle">NO.</th>
+                      <th class="text-center align-middle">NAMA PRODUK</th>
+                      <th class="text-center align-middle">KATEGORI PRODUK</th>
+                      <th class="text-center align-middle">DESKRIPSI</th>
+                      <th class="text-center align-middle">HARGA PRODUK</th>
+                      <th class="text-center align-middle">STOK</th>
+                      <th class="text-center align-middle">BERAT</th>
+                      <th class="text-center align-middle">DATA SUPPLIER</th>
+                      <th class="text-center align-middle">AKSI</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -81,24 +78,44 @@
                         $query = mysqli_query($connection,"SELECT * FROM produk");
                         while($row = mysqli_fetch_array($query)){
                     ?>
-  
                     <tr>
                         <td><?php echo $no++ ?></td>
                         <td><?php echo $row['nama_produk'] ?></td>
                         <td><?php echo $row['kategori'] ?></td>
                         <td><?php echo $row['deskripsi'] ?></td>
-                        <td><?php echo $row['stok'] ?></td>
                         <td><?php echo $row['harga_produk'] ?></td>
+                        <td><?php echo $row['stok'] ?></td>
                         <td><?php echo $row['berat'] ?></td>
                         <td><?php echo $row['data_suplier'] ?></td>
                         <td>
-                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                            <a href="edit-produk.php?id=<?php echo $row['id'] ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="hapus-produk.php?id=<?php echo $row['id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                            <a href="#" class="view" title="Lihat" data-toggle="modal" data-target="#modalDetail<?php echo $row['id'] ?>"><i class="material-icons">visibility</i></a>
+                            <a href="edit-produk.php?id=<?php echo $row['id'] ?>" class="edit" title="Ubah"><i class="material-icons">edit</i></a>
+                            <a href="hapus-produk.php?id=<?php echo $row['id'] ?>" class="delete" title="Hapus"><i class="material-icons">delete</i></a>
                         </td>
                     </tr>
-  
-                  <?php } ?>
+                    <!-- Modal Detail Produk -->
+                    <div class="modal fade" id="modalDetail<?php echo $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Detail Produk</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p><strong>Nama Produk:</strong> <?php echo $row['nama_produk'] ?></p>
+                            <p><strong>Kategori:</strong> <?php echo $row['kategori'] ?></p>
+                            <p><strong>Deskripsi:</strong> <?php echo $row['deskripsi'] ?></p>
+                            <p><strong>Harga:</strong> Rp<?php echo number_format($row['harga_produk'], 0, ',', '.') ?></p>
+                            <p><strong>Stok:</strong> <?php echo $row['stok'] ?></p>
+                            <p><strong>Berat:</strong> <?php echo $row['berat'] ?> kg</p>
+                            <p><strong>Supplier:</strong> <?php echo $row['data_suplier'] ?></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <?php } ?>
                   </tbody>
                 </table>
               </div>
@@ -107,14 +124,10 @@
       </div>
     </main>
 
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script>
-      $(document).ready( function () {
+      $(document).ready(function(){
           $('#myTable').DataTable();
-      } );
+      });
     </script>
   </body>
 </html>

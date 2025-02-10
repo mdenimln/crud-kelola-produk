@@ -84,11 +84,30 @@
                         <td><?php echo $row['telepon'] ?></td>
                         <td><?php echo $row['alamat'] ?></td>
                         <td>
-                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                        <a href="#" class="view" title="Lihat" data-toggle="modal" data-target="#modalDetail<?php echo $row['id'] ?>"><i class="material-icons">visibility</i></a>
                             <a href="edit-suplier.php?id=<?php echo $row['id'] ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
                             <a href="hapus-suplier.php?id=<?php echo $row['id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                         </td>
                     </tr>
+                    <!-- Modal Detail Produk -->
+                    <div class="modal fade" id="modalDetail<?php echo $row['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Detail Produk</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p><strong>Nama Supplier:</strong> <?php echo $row['nama'] ?></p>
+                            <p><strong>Telepon:</strong> <?php echo $row['telepon'] ?></p>
+                            <p><strong>Alamat:</strong> <?php echo $row['alamat'] ?></p>
+                          
+                          </div>
+                        </div>
+                      </div>
+                    </div>
   
                   <?php } ?>
                   </tbody>
@@ -98,7 +117,7 @@
         </div>
       </div>
     </main>
-
+  
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -107,6 +126,8 @@
       $(document).ready( function () {
           $('#myTable').DataTable();
       } );
+
+     
     </script>
   </body>
 </html>

@@ -39,7 +39,9 @@
     </header>
 
     <main>
-
+      <div class="home py-3 py-md-5 py-xl-8 text-center ">
+        <h1>SELAMAT DATANG DI DATA KELOLA (ADMIN)</h1>
+      </div>
     </main>
 
 

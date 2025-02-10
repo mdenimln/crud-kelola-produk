@@ -11,7 +11,7 @@ $jumlah = $_POST['jumlah'];
 $tanggal = date('Y-m-d');
 
 //query update data ke dalam database berdasarkan ID
-$query = "UPDATE penjualan SET data_produk = '$data_produk', data_pelanggan = '$data_pelanggan', jumlah = '$jumlah', tanggal = '$tanggal' WHERE id = '$id'";
+$query = "UPDATE transaksi SET data_produk = '$data_produk', data_pelanggan = '$data_pelanggan', jumlah = '$jumlah', tanggal = '$tanggal' WHERE id = '$id'";
 
 //kondisi pengecekan apakah data berhasil diupdate atau tidak
 if($connection->query($query)) {

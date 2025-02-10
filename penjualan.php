@@ -49,7 +49,6 @@
     </header>
 
     <main>
-
       <div class="container" style="margin-top: 80px">
         <div class="row">
           <div class="col-md-12">
@@ -74,10 +73,9 @@
                     <?php 
                         include('koneksi.php');
                         $no = 1;
-                        $query = mysqli_query($connection,"SELECT * FROM penjualan");
+                        $query = mysqli_query($connection,"SELECT * FROM transaksi");
                         while($row = mysqli_fetch_array($query)){
                     ?>
-  
                     <tr>
                         <td><?php echo $no++ ?></td>
                         <td><?php echo $row['data_produk'] ?></td>
@@ -85,13 +83,12 @@
                         <td><?php echo $row['jumlah'] ?></td>
                         <td><?php echo $row['tanggal'] ?></td>
                         <td>
-                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                            <a href="edit-penjualan.php?id=<?php echo $row['id'] ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="hapus-penjualan.php?id=<?php echo $row['id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                            <a href="#" class="view" title="View" data-id="<?php echo $row['id']; ?>"><i class="material-icons">visibility</i></a>
+                            <a href="edit-penjualan.php?id=<?php echo $row['id'] ?>" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">edit</i></a>
+                            <a href="hapus-penjualan.php?id=<?php echo $row['id'] ?>" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">delete</i></a>
                         </td>
                     </tr>
-  
-                  <?php } ?>
+                    <?php } ?>
                   </tbody>
                 </table>
               </div>
@@ -100,14 +97,56 @@
       </div>
     </main>
 
+    <!-- Modal untuk menampilkan detail transaksi -->
+    <div class="modal fade" id="viewModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detail Transaksi</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body-content" style="padding: 20px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title" id="produk"></h5>
+                            <p class="card-text"><strong>Pelanggan:</strong> <span id="pelanggan"></span></p>
+                            <p class="card-text"><strong>Jumlah:</strong> <span id="jumlah"></span></p>
+                            <p class="card-text"><strong>Tanggal:</strong> <span id="tanggal"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.view').click(function(){
+                var id = $(this).data('id');
+                $.ajax({
+                    url: 'view-transaksi.php',
+                    type: 'POST',
+                    data: { id: id },
+                    success: function(response){
+                        var data = JSON.parse(response);
+                        $('#produk').text(data.data_produk);
+                        $('#pelanggan').text(data.data_pelanggan);
+                        $('#jumlah').text(data.jumlah);
+                        $('#tanggal').text(data.tanggal);
+                        $('#viewModal').modal('show');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script>
       $(document).ready( function () {
           $('#myTable').DataTable();
-      } );
+      });
     </script>
   </body>
 </html>
