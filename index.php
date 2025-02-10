@@ -28,10 +28,10 @@
               <a class="nav-link" href="produk.php">Produk</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="suplier.php">Suplier</a>
+              <a class="nav-link" href="suplier.php">Supplier</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="penjualan.php">Penjualan</a>
+              <a class="nav-link" href="penjualan.php">Transaksi</a>
             </li>
           </ul>
         </div>
